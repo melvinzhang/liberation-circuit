@@ -56,6 +56,33 @@ static int add_orange_data_well(int centre_well, int data_well_type, int angle, 
 static int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y);
 static void mission_add_red_data_well_ring(int data_well_type, int centre_x, int centre_y, int circle_size, int wells, int starting_angle);
 
+void setup_tutorial1() {
+    int DEFAULT_DISTANCE_FROM_WELL = 512;
+    game.region_in_area_index = 0;
+    int player_base_x = 15;
+    int player_base_y = w_init.map_size_blocks / 2;
+    mission_add_data_well(0, 1, player_base_x - 4, player_base_y);
+
+
+
+    set_player_spawn_position_by_latest_well(0, 0, DEFAULT_DISTANCE_FROM_WELL);
+    mission_add_data_well(1, -1, player_base_x + 13, player_base_y - 15);
+    mission_add_data_well(1, -1, player_base_x + 13, player_base_y + 15);
+
+
+    load_mission_source("story/tutorial/tute1/defend1.c", 1, 0);
+    load_mission_source("story/tutorial/tute1/circle1.c", 1, 1);
+    clear_remaining_templates(1, 2);
+
+    int enemy_base_x = w_init.map_size_blocks - 15;
+    int enemy_base_y = w_init.map_size_blocks / 2;
+
+    set_player_spawn_position(1, enemy_base_x, enemy_base_y, 0);
+
+    add_extra_spawn(1, 1, enemy_base_x - 4, enemy_base_y, -2048);
+    add_extra_spawn(1, 1, enemy_base_x, enemy_base_y - 4, 0);
+}
+
 struct extra_spawnstruct
 {
 	int player_index;
@@ -440,54 +467,8 @@ PACKET_COLS
 //   w_init.command_mode = COMMAND_MODE_AUTO;
 // fall-through
 	 case MISSION_TUTORIAL1:
-
-	 	game.region_in_area_index = 0;
-	 	player_base_x = 15;
-	 	player_base_y = w_init.map_size_blocks / 2;
-	 	mission_add_data_well(0, 1, player_base_x - 4, player_base_y);
-//   add_mdetail_worm_source(player_base_x - 4, player_base_y, 20);
-
-
-//   add_mdetail_worm_source(player_base_x + 20, player_base_y, 20);
-
-
-
-   set_player_spawn_position_by_latest_well(0, 0, DEFAULT_DISTANCE_FROM_WELL);
-//   set_player_w_init_spawn_angle(0, w_init.data_wells - 1); // - 1 because mission_add_data_well incremenets w_init.data_wells
-	 	mission_add_data_well(1, -1, player_base_x + 13, player_base_y - 15);
-//   add_mdetail_worm_source(player_base_x +13, player_base_y - 15, 20);
-	 	mission_add_data_well(1, -1, player_base_x + 13, player_base_y + 15);
-//   add_mdetail_worm_source(player_base_x +13, player_base_y + 15, 20);
-
-
-   load_mission_source("story/tutorial/tute1/defend1.c", 1, 0);
-   load_mission_source("story/tutorial/tute1/circle1.c", 1, 1);
-   clear_remaining_templates(1, 2);
-
-	 	enemy_base_x = w_init.map_size_blocks - 15;
-	 	enemy_base_y = w_init.map_size_blocks / 2;
-
-   set_player_spawn_position(1, enemy_base_x, enemy_base_y, 0);
-
-	 	add_extra_spawn(1, 1,
-																			enemy_base_x - 4,
-																			enemy_base_y,
-																			-2048);
-	 	add_extra_spawn(1, 1,
-																			enemy_base_x,
-																			enemy_base_y - 4,
-																			0);
-/*	 	add_extra_spawn(1, 1,
-																			enemy_base_x + 4,
-																			enemy_base_y,
-																			2048);
-	 	add_extra_spawn(1, 1,
-																			enemy_base_x,
-																			enemy_base_y + 4,
-																			4096);
-*/
-
-	  break;
+         setup_tutorial1();
+         break;
 
 
 
