@@ -65,6 +65,10 @@ void set_region_in_area_index(int idx) {
     game.region_in_area_index = idx;
 }
 
+void set_starting_data_setting(int k, int v) {
+    w_init.starting_data_setting[k] = v;
+}
+
 struct extra_spawnstruct
 {
 	int player_index;
@@ -536,46 +540,8 @@ PACKET_COLS
 
 
 	 case MISSION_BLUE_2:
-	 	{
-
-	 	game.region_in_area_index = 1;
-
-   load_mission_source("story/blue/blue2/b2_rbase.c", 1, 0);
-   load_mission_source("story/blue/blue2/b2_wander1.c", 1, 1);
-   load_mission_source("story/blue/blue2/b2_wander2.c", 1, 2);
-   load_mission_source("story/blue/blue2/b2_harvest.c", 1, 3);
-   clear_remaining_templates(1, 4);
-
-   w_init.starting_data_setting [1] = 1;
-
-
-   int base_data_well_angle = ANGLE_8 * 3;
-
-   int md_index_centre = add_mdetail_ring(w_init.map_size_blocks / 2, w_init.map_size_blocks / 2, 37, 0);
-   int md_index_A = add_mdetail_ring(w_init.map_size_blocks / 2,
-																																					w_init.map_size_blocks / 2,
-																																					15, 0);
-
-   mission_add_data_well_to_ring(0, 1, md_index_A,	base_data_well_angle);
-   set_player_spawn_position_by_latest_well(0, base_data_well_angle + ANGLE_2, DEFAULT_DISTANCE_FROM_WELL);
-
-   mission_add_data_well_to_ring(0, -1, md_index_centre,	base_data_well_angle + ANGLE_2);
-   set_player_spawn_position_by_latest_well(1, base_data_well_angle, DEFAULT_DISTANCE_FROM_WELL);
-
-   mission_add_data_well_to_ring(1, 1, md_index_centre,	ANGLE_4 + ANGLE_8);
-   mission_add_data_well_to_ring(1, -1, md_index_centre,	- ANGLE_8);
-
-   mission_add_data_well_to_ring(1, 1, md_index_centre,	ANGLE_2 + ANGLE_8);
-   mission_add_data_well_to_ring(1, -1, md_index_centre,	ANGLE_8);
-
-   mission_add_data_well_to_ring(2, -1, md_index_A,	ANGLE_2 + ANGLE_8);
-   mission_add_data_well_to_ring(2, 1, md_index_A,	ANGLE_8);
-   mission_add_data_well_to_ring(2, -1, md_index_A,	-ANGLE_8);
-
-
-
-	 	}
-	  break;
+        do_script("story/blue/blue2/blue2.lua");
+	    break;
 
 
 	 case MISSION_BLUE_CAPITAL:

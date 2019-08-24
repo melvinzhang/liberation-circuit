@@ -3,6 +3,7 @@ local ffi = require("ffi")
 ffi.cdef[[
 int get_map_size_blocks();
 void set_region_in_area_index(int idx);
+void set_starting_data_setting(int k, int v);
 int mission_add_data_well(int data_well_type, float spin_sign, int x, int y);
 int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle);
 
