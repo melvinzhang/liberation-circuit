@@ -762,7 +762,7 @@ struct source_struct
 */
 
 // Loads one of the pre-set source files into a template and compiles it.
-void load_mission_source(char* filename, int player_index, int template_index)
+void load_mission_source(const char* filename, int player_index, int template_index)
 {
 	int loaded = load_source_file_into_template(filename, player_index, template_index);//, PATH_TYPE_STORY);
 
