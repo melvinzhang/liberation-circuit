@@ -49,7 +49,7 @@ extern struct game_struct game;
 extern struct template_struct templ [PLAYERS] [TEMPLATES_PER_PLAYER];
 
 
-static int mission_add_data_well(int data_well_type, float spin_sign, int x, int y);
+int mission_add_data_well(int data_well_type, float spin_sign, int x, int y);
 static int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle);
 //static void mission_mirror_spawns_and_wells(void);
 static int add_orange_data_well(int centre_well, int data_well_type, int angle, int distance_from_centre, int line_thickness);
@@ -100,6 +100,13 @@ static int do_script(const char *fn) {
     return 0;
 }
 
+int get_map_size_blocks() {
+    return w_init.map_size_blocks;
+}
+
+void set_region_in_area_index(int idx) {
+    game.region_in_area_index = idx;
+}
 
 struct extra_spawnstruct
 {
@@ -2956,7 +2963,7 @@ default: // default should never happen
 
 
 
-static int mission_add_data_well(int data_well_type, float spin_sign, int x, int y)
+int mission_add_data_well(int data_well_type, float spin_sign, int x, int y)
 {
 
 
