@@ -2,21 +2,12 @@ local C = require("game")
 
 C.set_region_in_area_index(1)
 
-template_index = 0;
-
-C.load_mission_source("story/green/green2/g4_base.c", 1, template_index)
-template_index = template_index + 1
-C.load_mission_source("story/green/green2/g4_firebase.c", 1, template_index)
-template_index = template_index + 1
-C.load_mission_source("story/green/green2/g4_builder.c", 1, template_index)
-template_index = template_index + 1
-C.load_mission_source("story/green/green2/g4_spikebase.c", 1, template_index)
-template_index = template_index + 1
-C.load_mission_source("story/green/green2/g4_outpost.c", 1, template_index)
-template_index = template_index + 1
-C.load_mission_source("story/green/green2/g4_builder2.c", 1, template_index)
-template_index = template_index + 1
-C.clear_remaining_templates(1, template_index)
+sources = {"story/green/green2/g4_base.c", "story/green/green2/g4_firebase.c", "story/green/green2/g4_builder.c",
+           "story/green/green2/g4_spikebase.c", "story/green/green2/g4_outpost.c", "story/green/green2/g4_builder2.c"}
+for i, v in ipairs(sources) do
+    C.load_mission_source(v, 1, i - 1)
+end
+C.clear_remaining_templates(1, #sources);
 
 DEFAULT_DISTANCE_FROM_WELL = 512
 
