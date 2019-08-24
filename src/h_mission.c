@@ -83,6 +83,24 @@ void setup_tutorial1() {
     add_extra_spawn(1, 1, enemy_base_x, enemy_base_y - 4, 0);
 }
 
+#include <luajit-2.1/lua.h>
+#include <luajit-2.1/lauxlib.h>
+#include <luajit-2.1/lualib.h>
+
+static int do_script(char *fn) {
+    fprintf(stdout, "Running script %s\n", fn);
+    lua_State *L = luaL_newstate();
+    luaL_openlibs(L);
+    int status = luaL_dofile(L, fn);
+    if (status) {
+        fprintf(stderr, "Error: %s\n", lua_tostring(L, -1));
+        return 1;
+    }
+    lua_close(L);
+    return 0;
+}
+
+
 struct extra_spawnstruct
 {
 	int player_index;
@@ -467,7 +485,8 @@ PACKET_COLS
 //   w_init.command_mode = COMMAND_MODE_AUTO;
 // fall-through
 	 case MISSION_TUTORIAL1:
-         setup_tutorial1();
+         do_script("story/tutorial/tute1/tute1.lua");
+         //setup_tutorial1();
          break;
 
 

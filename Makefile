@@ -1,6 +1,6 @@
 ALLEGRO_MODULES = allegro-5 allegro_audio-5 allegro_acodec-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_primitives-5
 CFLAGS = $$(pkg-config --cflags $(ALLEGRO_MODULES)) -Wall
-LIBS = -lm $$(pkg-config --libs $(ALLEGRO_MODULES))
+LIBS = -lm -lluajit-5.1 $$(pkg-config --libs $(ALLEGRO_MODULES))
 HEADERS = $(shell find src/ -name '*.h')
 OBJECTS = $(shell find src/ -name '*.c' | sed -e 's/\.c$$/.o/g')
 
@@ -12,7 +12,7 @@ clean:
 	rm -f bin/libcirc src/*.o
 
 bin/libcirc: $(OBJECTS)
-	gcc $(CFLAGS) -o $@ $? $(LIBS)
+	gcc $(CFLAGS) -o $@ $? $(LIBS) -rdynamic
 
 %.o: %.c $(HEADERS)
 	gcc $(CFLAGS) -c -o $@ $<
