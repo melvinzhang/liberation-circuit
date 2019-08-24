@@ -33,7 +33,7 @@
 #include "t_template.h"
 #include "h_mission.h"
 #include "h_story.h"
-
+#include "l_script.h"
 
 struct mission_state_struct mission_state; // just need one struct for the current mission
 
@@ -56,22 +56,6 @@ static int add_orange_data_well(int centre_well, int data_well_type, int angle, 
 static int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y);
 static void mission_add_red_data_well_ring(int data_well_type, int centre_x, int centre_y, int circle_size, int wells, int starting_angle);
 
-#include <luajit-2.1/lua.h>
-#include <luajit-2.1/lauxlib.h>
-#include <luajit-2.1/lualib.h>
-
-static int do_script(const char *fn) {
-    fprintf(stdout, "Running script %s\n", fn);
-    lua_State *L = luaL_newstate();
-    luaL_openlibs(L);
-    int status = luaL_dofile(L, fn);
-    if (status) {
-        fprintf(stderr, "Error: %s\n", lua_tostring(L, -1));
-        return 1;
-    }
-    lua_close(L);
-    return 0;
-}
 
 int get_map_size_blocks() {
     return w_init.map_size_blocks;
