@@ -545,48 +545,8 @@ PACKET_COLS
 
 
 	 case MISSION_BLUE_CAPITAL:
-	 	{
-
-	 	game.region_in_area_index = 2;
-
-   load_mission_source("story/blue/blue3/b3_rbase.c", 1, 0);
-   load_mission_source("story/blue/blue3/b3_wander1.c", 1, 1);
-   load_mission_source("story/blue/blue3/b3_wander2.c", 1, 2);
-   load_mission_source("story/blue/blue3/b3_harvest.c", 1, 3);
-   clear_remaining_templates(1, 4);
-
-   w_init.starting_data_setting [1] = 1;
-
-   int base_data_well_angle = ANGLE_8 * 3;
-
-   int md_index_large = add_mdetail_ring(w_init.map_size_blocks / 2, w_init.map_size_blocks / 2, 43, 0);
-   int md_index_small = add_mdetail_ring(w_init.map_size_blocks - 47,
-																																					47,
-																																					15, 0);
-
-// outer ring:
-   mission_add_data_well_to_ring(0, 1, md_index_large,	base_data_well_angle);
-   set_player_spawn_position_by_latest_well(0, base_data_well_angle + ANGLE_2, DEFAULT_DISTANCE_FROM_WELL);
-
-   mission_add_data_well_to_ring(1, 1, md_index_large,	base_data_well_angle + ANGLE_8);
-   mission_add_data_well_to_ring(1, 1, md_index_large,	base_data_well_angle - ANGLE_8);
-
-   mission_add_data_well_to_ring(2, 1, md_index_large,	base_data_well_angle + ANGLE_4 + ANGLE_16);
-   mission_add_data_well_to_ring(2, 1, md_index_large,	base_data_well_angle - ANGLE_4 - ANGLE_16);
-
-   mission_add_data_well_to_ring(2, -1, md_index_large,	base_data_well_angle + ANGLE_2 + ANGLE_16);
-   mission_add_data_well_to_ring(2, -1, md_index_large,	base_data_well_angle + ANGLE_2 - ANGLE_16);
-
-   mission_add_data_well_to_ring(0, -1, md_index_small,	base_data_well_angle + ANGLE_2);
-   set_player_spawn_position_by_latest_well(1, base_data_well_angle, DEFAULT_DISTANCE_FROM_WELL);
-
-   mission_add_data_well_to_ring(1, 1, md_index_small, base_data_well_angle + ANGLE_6);
-   mission_add_data_well_to_ring(1, -1, md_index_small,	base_data_well_angle - ANGLE_6);
-
-
-
-	 	}
-	  break;
+        do_script("story/blue/blue3/blue3.lua");
+	    break;
 
 
 
