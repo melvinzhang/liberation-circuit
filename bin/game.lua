@@ -19,6 +19,10 @@ int add_mdetail_ring(int centre_x, int centre_y, int ring_size, int empty_centre
 int add_mdetail_line(int start_x, int start_y, int end_x, int end_y, int line_thickness);
 int add_mdetail_system(int centre_x, int centre_y, int system_size);
 int add_mdetail_worm_source(int centre_x, int centre_y, int worms);
+int add_line_between_data_wells(int well_1, int well_2, int line_thickness);
+int add_data_well_to_mdetail_ring(int mdetail_ring_index, int angle, int reserve_A, int reserve_B, int reserve_squares, float spin_rate);
+void add_extra_spawn_by_latest_well(int player_index, int template_index, int angle_from_well);
+void add_mdetail_worm_source_to_all_wells(void);
 ]]
 
 return ffi.C
