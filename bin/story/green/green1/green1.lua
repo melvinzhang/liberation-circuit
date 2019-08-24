@@ -2,15 +2,11 @@ local C = require("game")
 
 C.set_region_in_area_index(0)
 
-template_index = 0;
-
-C.load_mission_source("story/green/green1/g1_base.c", 1, template_index);
-template_index = template_index + 1
-C.load_mission_source("story/green/green1/g1_firebase.c", 1, template_index);
-template_index = template_index + 1
-C.load_mission_source("story/green/green1/g1_builder.c", 1, template_index);
-template_index = template_index + 1
-C.clear_remaining_templates(1, template_index);
+sources = {"story/green/green1/g1_base.c", "story/green/green1/g1_firebase.c", "story/green/green1/g1_builder.c"}
+for i, v in ipairs(sources) do
+    C.load_mission_source(v, 1, i - 1)
+end
+C.clear_remaining_templates(1, #sources);
 
 centre_block = C.get_map_size_blocks() / 2
 
