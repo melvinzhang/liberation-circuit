@@ -87,7 +87,7 @@ void setup_tutorial1() {
 #include <luajit-2.1/lauxlib.h>
 #include <luajit-2.1/lualib.h>
 
-static int do_script(char *fn) {
+static int do_script(const char *fn) {
     fprintf(stdout, "Running script %s\n", fn);
     lua_State *L = luaL_newstate();
     luaL_openlibs(L);
