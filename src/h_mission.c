@@ -50,7 +50,7 @@ extern struct template_struct templ [PLAYERS] [TEMPLATES_PER_PLAYER];
 
 
 int mission_add_data_well(int data_well_type, float spin_sign, int x, int y);
-static int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle);
+int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle);
 //static void mission_mirror_spawns_and_wells(void);
 static int add_orange_data_well(int centre_well, int data_well_type, int angle, int distance_from_centre, int line_thickness);
 static int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y);
@@ -515,30 +515,8 @@ PACKET_COLS
 			break;
 
 	 case MISSION_BLUE_1:
+        do_script("story/blue/blue1/blue1.lua");
 	 	{
-
-	 	game.region_in_area_index = 0;
-
-   load_mission_source("story/blue/blue1/rbase.c", 1, 0);
-   load_mission_source("story/blue/blue1/wander1.c", 1, 1);
-   load_mission_source("story/blue/blue1/wander2.c", 1, 2);
-   clear_remaining_templates(1, 3);
-
-
-   int base_data_well_angle = ANGLE_3;
-
-   int md_index = add_mdetail_ring(w_init.map_size_blocks / 2, w_init.map_size_blocks / 2, 30, 0);
-
-   mission_add_data_well_to_ring(0, 1, md_index,	base_data_well_angle);
-   set_player_spawn_position_by_latest_well(0, base_data_well_angle + ANGLE_2, DEFAULT_DISTANCE_FROM_WELL);
-
-   mission_add_data_well_to_ring(1, 1, md_index,	base_data_well_angle + ANGLE_6);
-   mission_add_data_well_to_ring(2, -1, md_index,	base_data_well_angle + ANGLE_6 * 2);
-   mission_add_data_well_to_ring(0, -1, md_index,	base_data_well_angle + ANGLE_6 * 3);
-   set_player_spawn_position_by_latest_well(1, base_data_well_angle, DEFAULT_DISTANCE_FROM_WELL);
-   mission_add_data_well_to_ring(1, -1, md_index,	base_data_well_angle + ANGLE_6 * 4);
-   mission_add_data_well_to_ring(2, 1, md_index,	base_data_well_angle + ANGLE_6 * 5);
-
 /*
    int md_index = add_mdetail_ring(w_init.map_size_blocks / 2, w_init.map_size_blocks / 2, 23, 0);
 
@@ -2899,7 +2877,7 @@ int mission_add_data_well(int data_well_type, float spin_sign, int x, int y)
 }
 
 
-static int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle)
+int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle)
 {
 
 	   return add_data_well_to_mdetail_ring(md_index,
