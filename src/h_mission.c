@@ -588,80 +588,8 @@ PACKET_COLS
 
 
 	 case MISSION_PURPLE_1:
-	 	{
-
-	 	game.region_in_area_index = 0;
-
-   int template_index = 0;
-
-   load_mission_source("story/purple/purple1/p1_base.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_m_builder.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_harvest.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_minbase.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_leader1.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_leader2.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_escort.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_picket.c", 1, template_index++);
-   load_mission_source("story/purple/purple1/p1_defence.c", 1, template_index++);
-   clear_remaining_templates(1, template_index);
-
-   int centre_block = w_init.map_size_blocks / 2;
-
-   w_init.starting_data_setting [1] = 11;
-
-//	 	player_base_x = 25;
-//	 	player_base_y = centre_block;
-//	 	mission_add_data_well(player_base_x, player_base_y,	2000, 1000, 4, 0.002);
-   int dwi = 0;
-
-#define MP1_SHORT 12
-#define MP1_LONG 25
-
-   data_well_index [dwi++] = mission_add_data_well(0, 1, 15, centre_block);
-   set_player_spawn_position_by_latest_well(0, 0, DEFAULT_DISTANCE_FROM_WELL);
-
-   data_well_index [dwi++] = mission_add_data_well(1, 1, 15 + MP1_SHORT, centre_block - MP1_LONG);
-   data_well_index [dwi++] = mission_add_data_well(1, 1, 15 + MP1_LONG, centre_block + MP1_SHORT);
-
-   data_well_index [dwi++] = mission_add_data_well(0, 1, centre_block, 15);
-   data_well_index [dwi++] = mission_add_data_well(1, 1, centre_block - MP1_SHORT, 15 + MP1_LONG);
-   data_well_index [dwi++] = mission_add_data_well(1, 1, centre_block + MP1_LONG, 15 + MP1_SHORT);
-
-   data_well_index [dwi++] = mission_add_data_well(0, 1, centre_block, w_init.map_size_blocks - 15);
-   data_well_index [dwi++] = mission_add_data_well(1, 1, centre_block - MP1_LONG, w_init.map_size_blocks - 15 - MP1_SHORT);
-   data_well_index [dwi++] = mission_add_data_well(1, 1, centre_block + MP1_SHORT, w_init.map_size_blocks - 15 - MP1_LONG);
-
-   data_well_index [dwi++] = mission_add_data_well(0, 1, w_init.map_size_blocks - 15, centre_block);
-   set_player_spawn_position_by_latest_well(1, ANGLE_2, 700);
-
-   data_well_index [dwi++] = mission_add_data_well(1, 1, w_init.map_size_blocks - 15 - MP1_LONG, centre_block - MP1_SHORT);
-   data_well_index [dwi++] = mission_add_data_well(1, 1, w_init.map_size_blocks - 15 - MP1_SHORT, centre_block + MP1_LONG);
-
-   add_mdetail_worm_source_to_all_wells();
-
-//   add_mdetail_worm_source(player_base_x, player_base_y, 15);
-
-/*
-
-
-   data_well_index [1] = mission_add_data_well(1,
-																																															1,
-																																															player_base_x + 20,
-																																															player_base_y);
-   add_mdetail_worm_source(player_base_x + 20, player_base_y, 15);
-   data_well_index [2] = mission_add_data_well(1,
-																																															1,
-																																															player_base_x,
-																																															player_base_y + 20);
-   add_mdetail_worm_source(player_base_x, player_base_y + 20, 15);
-*/
-
-//   data_well_index [dwi++] = mission_add_data_well(0, 1, w_init.map_size_blocks - 25, w_init.map_size_blocks - 25);
-
-
-
-	 	}
-	  break;
+        do_script("story/purple/purple1/purple1.lua");
+	    break;
 
 
 	 case MISSION_PURPLE_2:
