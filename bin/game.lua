@@ -6,6 +6,9 @@ void set_region_in_area_index(int idx);
 void set_starting_data_setting(int k, int v);
 int mission_add_data_well(int data_well_type, float spin_sign, int x, int y);
 int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle);
+int add_orange_data_well(int centre_well, int data_well_type, int angle, int distance_from_centre, int line_thickness);
+int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y);
+void mission_add_red_data_well_ring(int data_well_type, int centre_x, int centre_y, int circle_size, int wells, int starting_angle);
 
 void set_player_spawn_position_by_latest_well(int player_index, int angle_from_well, int distance_from_well);
 void set_player_spawn_position(int player_index, int block_x, int block_y, int angle);

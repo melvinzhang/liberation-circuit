@@ -52,9 +52,9 @@ extern struct template_struct templ [PLAYERS] [TEMPLATES_PER_PLAYER];
 int mission_add_data_well(int data_well_type, float spin_sign, int x, int y);
 int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_index, int angle);
 //static void mission_mirror_spawns_and_wells(void);
-static int add_orange_data_well(int centre_well, int data_well_type, int angle, int distance_from_centre, int line_thickness);
-static int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y);
-static void mission_add_red_data_well_ring(int data_well_type, int centre_x, int centre_y, int circle_size, int wells, int starting_angle);
+int add_orange_data_well(int centre_well, int data_well_type, int angle, int distance_from_centre, int line_thickness);
+int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y);
+void mission_add_red_data_well_ring(int data_well_type, int centre_x, int centre_y, int circle_size, int wells, int starting_angle);
 
 
 int get_map_size_blocks() {
@@ -593,70 +593,8 @@ PACKET_COLS
 
 
 	 case MISSION_PURPLE_2:
-	 	{
-
-	 	game.region_in_area_index = 1;
-
-   int template_index = 0;
-
-   load_mission_source("story/purple/purple2/p2_base.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_m_builder.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_harvest.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_minbase.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_leader1.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_leader2.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_escort.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_picket.c", 1, template_index++);
-   load_mission_source("story/purple/purple2/p2_defence.c", 1, template_index++);
-   clear_remaining_templates(1, template_index);
-
-   w_init.starting_data_setting [1] = 12;
-
-
-   int centre_block = w_init.map_size_blocks / 2;
-
-//	 	player_base_x = 25;
-//	 	player_base_y = centre_block;
-//	 	mission_add_data_well(player_base_x, player_base_y,	2000, 1000, 4, 0.002);
-   int dwi = 0;
-
-#define P2_CIRCLE_RADIUS 46
-
-   data_well_index [dwi++] = mission_add_data_well_to_circle(0, ANGLE_2, P2_CIRCLE_RADIUS, 1, centre_block, centre_block);
-   set_player_spawn_position_by_latest_well(0, 0, DEFAULT_DISTANCE_FROM_WELL);
-
-   data_well_index [dwi++] = mission_add_data_well_to_circle(0, 0, P2_CIRCLE_RADIUS, -1, centre_block, centre_block);
-   set_player_spawn_position_by_latest_well(1, ANGLE_2, 700);
-
-   data_well_index [dwi++] = mission_add_data_well_to_circle(1, ANGLE_8, P2_CIRCLE_RADIUS, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(1, -ANGLE_8, P2_CIRCLE_RADIUS, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(1, ANGLE_4, P2_CIRCLE_RADIUS, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(1, -ANGLE_4, P2_CIRCLE_RADIUS, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(1, ANGLE_2 + ANGLE_8, P2_CIRCLE_RADIUS, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(1, ANGLE_2 - ANGLE_8, P2_CIRCLE_RADIUS, 1, centre_block, centre_block);
-
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, ANGLE_4 - 600, P2_CIRCLE_RADIUS - 14, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, ANGLE_4 + 600, P2_CIRCLE_RADIUS - 14, 1, centre_block, centre_block);
-
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, -ANGLE_4 - 600, P2_CIRCLE_RADIUS - 14, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, -ANGLE_4 + 600, P2_CIRCLE_RADIUS - 14, 1, centre_block, centre_block);
-
-//   data_well_index [dwi++] = mission_add_data_well_to_circle(1, ANGLE_4, P2_CIRCLE_RADIUS - 19, 1, centre_block, centre_block);
-//   data_well_index [dwi++] = mission_add_data_well_to_circle(1, -ANGLE_4, P2_CIRCLE_RADIUS - 19, 1, centre_block, centre_block);
-
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, ANGLE_2 - 450, P2_CIRCLE_RADIUS - 9, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, ANGLE_2 + 450, P2_CIRCLE_RADIUS - 9, 1, centre_block, centre_block);
-
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, -450, P2_CIRCLE_RADIUS - 9, 1, centre_block, centre_block);
-   data_well_index [dwi++] = mission_add_data_well_to_circle(2, 450, P2_CIRCLE_RADIUS - 9, 1, centre_block, centre_block);
-
-
-
-
-   add_mdetail_worm_source_to_all_wells();
-
-	 	}
-	  break;
+        do_script("story/purple/purple2/purple2.lua");
+	    break;
 
 
 	 case MISSION_PURPLE_CAPITAL:
@@ -2003,7 +1941,7 @@ int mission_add_data_well_to_ring(int data_well_type, float spin_sign, int md_in
 
 
 
-static int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y)
+int mission_add_data_well_to_circle(int data_well_type, int angle, int dist, float spin_sign, int centre_x, int centre_y)
 {
 
 
@@ -2031,7 +1969,7 @@ static int mission_add_data_well_to_circle(int data_well_type, int angle, int di
 }
 
 
-static void mission_add_red_data_well_ring(int data_well_type, int centre_x, int centre_y, int circle_size, int wells, int starting_angle)
+void mission_add_red_data_well_ring(int data_well_type, int centre_x, int centre_y, int circle_size, int wells, int starting_angle)
 {
 
 	int i;
@@ -2057,7 +1995,7 @@ static void mission_add_red_data_well_ring(int data_well_type, int centre_x, int
 }
 
 
-static int add_orange_data_well(int centre_well, int data_well_type, int angle, int distance_from_centre, int line_thickness)
+int add_orange_data_well(int centre_well, int data_well_type, int angle, int distance_from_centre, int line_thickness)
 {
 
  block_cart origin_block = get_well_block_position(centre_well);
