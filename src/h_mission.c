@@ -572,81 +572,8 @@ PACKET_COLS
 
 
 	 case MISSION_YELLOW_1:
-	 	{
-
-	 	game.region_in_area_index = 0;
-
-   int template_index = 0;
-
-   load_mission_source("story/yellow/yellow1/y1_base.c", 1, template_index++);
-   load_mission_source("story/yellow/yellow1/y1_m_builder.c", 1, template_index++);
-   load_mission_source("story/yellow/yellow1/y1_harvest.c", 1, template_index++);
-   load_mission_source("story/yellow/yellow1/y1_leader1.c", 1, template_index++);
-   load_mission_source("story/yellow/yellow1/y1_leader2.c", 1, template_index++);
-   load_mission_source("story/yellow/yellow1/y1_follower.c", 1, template_index++);
-   load_mission_source("story/yellow/yellow1/y1_minbase.c", 1, template_index++);
-   load_mission_source("story/yellow/yellow1/y1_scout.c", 1, template_index++);
-   clear_remaining_templates(1, template_index);
-
-   int centre_block = w_init.map_size_blocks / 2;
-
-	 	player_base_x = 25;
-	 	player_base_y = 25;
-//	 	mission_add_data_well(player_base_x, player_base_y,	2000, 1000, 4, 0.002);
-   int dwi = 0;
-
-   data_well_index [dwi++] = mission_add_data_well(0, 1, player_base_x, player_base_y);
-   set_player_spawn_position_by_latest_well(0, ANGLE_8, DEFAULT_DISTANCE_FROM_WELL);
-
-   data_well_index [dwi++] = mission_add_data_well(1,
-																																															1,
-																																															player_base_x + 20,
-																																															player_base_y + 5);
-   data_well_index [dwi++] = mission_add_data_well(1,
-																																															1,
-																																															player_base_x + 5,
-																																															player_base_y + 20);
-
-   data_well_index [dwi++] = mission_add_data_well(2,
-																																															1,
-																																															centre_block + 15,
-																																															centre_block - 15);
-   data_well_index [dwi++] = mission_add_data_well(2,
-																																															-1,
-																																															centre_block - 15,
-																																															centre_block + 15);
-
-   data_well_index [dwi++] = mission_add_data_well(1,
-																																															1,
-																																															centre_block + 15,
-																																															centre_block - 45);
-   data_well_index [dwi++] = mission_add_data_well(1,
-																																															-1,
-																																															centre_block - 15,
-																																															centre_block + 45);
-
-   data_well_index [dwi++] = mission_add_data_well(1,
-																																															-1,
-																																															centre_block + 45,
-																																															centre_block - 32);
-   data_well_index [dwi++] = mission_add_data_well(1,
-																																															1,
-																																															centre_block - 45,
-																																															centre_block + 32);
-
-
-
-   data_well_index [dwi++] = mission_add_data_well(0, -1, w_init.map_size_blocks - 25, w_init.map_size_blocks - 25);
-   set_player_spawn_position_by_latest_well(1, -ANGLE_8, DEFAULT_DISTANCE_FROM_WELL);
-
-   data_well_index [dwi++] = mission_add_data_well(0, -1, w_init.map_size_blocks - 30, w_init.map_size_blocks - 45);
-   data_well_index [dwi++] = mission_add_data_well(0, -1, w_init.map_size_blocks - 45, w_init.map_size_blocks - 30);
-
-
-   w_init.starting_data_setting [1] = 1;
-
-	 	}
-	  break;
+        do_script("story/yellow/yellow1/yellow1.lua");
+	    break;
 
 
 
