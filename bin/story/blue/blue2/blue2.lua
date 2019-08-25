@@ -15,13 +15,13 @@ ANGLE_2 = 4096
 ANGLE_4 = 2048
 ANGLE_8 = 1024
 
-base_data_well_angle = ANGLE_8 * 3;
+base_data_well_angle = ANGLE_8 * 3
 
 md_index_centre = C.add_mdetail_ring(C.get_map_size_blocks() / 2, C.get_map_size_blocks() / 2, 37, 0)
 md_index_A = C.add_mdetail_ring(C.get_map_size_blocks() / 2, C.get_map_size_blocks() / 2, 15, 0)
 
 C.mission_add_data_well_to_ring(0, 1, md_index_A, base_data_well_angle)
-C.set_player_spawn_position_by_latest_well(0, base_data_well_angle + ANGLE_2, DEFAULT_DISTANCE_FROM_WELL);
+C.set_player_spawn_position_by_latest_well(0, base_data_well_angle + ANGLE_2, DEFAULT_DISTANCE_FROM_WELL)
 
 C.mission_add_data_well_to_ring(0, -1, md_index_centre, base_data_well_angle + ANGLE_2)
 C.set_player_spawn_position_by_latest_well(1, base_data_well_angle, DEFAULT_DISTANCE_FROM_WELL)

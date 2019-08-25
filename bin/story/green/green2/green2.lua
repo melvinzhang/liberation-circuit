@@ -7,7 +7,7 @@ sources = {"story/green/green2/g4_base.c", "story/green/green2/g4_firebase.c", "
 for i, v in ipairs(sources) do
     C.load_mission_source(v, 1, i - 1)
 end
-C.clear_remaining_templates(1, #sources);
+C.clear_remaining_templates(1, #sources)
 
 DEFAULT_DISTANCE_FROM_WELL = 512
 
@@ -29,13 +29,13 @@ C.mission_add_data_well(2, -1, centre_block_x + GREEN_2_DIST_1, centre_block_y +
 C.mission_add_data_well(1, -1, centre_block_x - GREEN_2_DIST_4, centre_block_y - GREEN_2_DIST_3)
 C.mission_add_data_well(0, -1, centre_block_x - GREEN_2_DIST_5, centre_block_y - GREEN_2_DIST_5)
 C.set_player_spawn_position_by_latest_well(1, 1000, DEFAULT_DISTANCE_FROM_WELL)
-C.mission_add_data_well(1, -1, centre_block_x - GREEN_2_DIST_3, centre_block_y - GREEN_2_DIST_4);
+C.mission_add_data_well(1, -1, centre_block_x - GREEN_2_DIST_3, centre_block_y - GREEN_2_DIST_4)
 
-C.add_line_between_data_wells(0, 1, 70);
-C.add_line_between_data_wells(1, 2, 70);
-C.add_line_between_data_wells(2, 3, 70);
-C.add_line_between_data_wells(3, 4, 70);
-C.add_line_between_data_wells(4, 0, 70);
+C.add_line_between_data_wells(0, 1, 70)
+C.add_line_between_data_wells(1, 2, 70)
+C.add_line_between_data_wells(2, 3, 70)
+C.add_line_between_data_wells(3, 4, 70)
+C.add_line_between_data_wells(4, 0, 70)
 
 centre_block_x = (C.get_map_size_blocks() / 2) + GREEN_2A_CENTRE_DISTANCE
 centre_block_y = (C.get_map_size_blocks() / 2) - GREEN_2A_CENTRE_DISTANCE
@@ -59,7 +59,7 @@ centre_block_y = (C.get_map_size_blocks() / 2) + GREEN_2_CENTRE_DISTANCE
 C.mission_add_data_well(2, -1, centre_block_x - GREEN_2_DIST_2, centre_block_y - GREEN_2_DIST_1)
 C.mission_add_data_well(2, -1, centre_block_x - GREEN_2_DIST_1, centre_block_y - GREEN_2_DIST_2)
 C.mission_add_data_well(1, -1, centre_block_x + GREEN_2_DIST_4, centre_block_y + GREEN_2_DIST_3)
-C.set_player_spawn_position_by_latest_well(0, 5000, DEFAULT_DISTANCE_FROM_WELL);
+C.set_player_spawn_position_by_latest_well(0, 5000, DEFAULT_DISTANCE_FROM_WELL)
 C.mission_add_data_well(0, -1, centre_block_x + GREEN_2_DIST_5, centre_block_y + GREEN_2_DIST_5)
 C.mission_add_data_well(1, -1, centre_block_x + GREEN_2_DIST_3, centre_block_y + GREEN_2_DIST_4)
 

@@ -18,7 +18,7 @@ C.clear_remaining_templates(1, 2)
 enemy_base_x = C.get_map_size_blocks() - 15
 enemy_base_y = C.get_map_size_blocks() / 2
 
-C.set_player_spawn_position(1, enemy_base_x, enemy_base_y, 0);
+C.set_player_spawn_position(1, enemy_base_x, enemy_base_y, 0)
 
-C.add_extra_spawn(1, 1, enemy_base_x - 4, enemy_base_y, -2048);
-C.add_extra_spawn(1, 1, enemy_base_x, enemy_base_y - 4, 0);
+C.add_extra_spawn(1, 1, enemy_base_x - 4, enemy_base_y, -2048)
+C.add_extra_spawn(1, 1, enemy_base_x, enemy_base_y - 4, 0)

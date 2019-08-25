@@ -17,7 +17,7 @@ ANGLE_6 = 1365
 ANGLE_8 = 1024
 ANGLE_16 = 512
 
-base_data_well_angle = ANGLE_8 * 3;
+base_data_well_angle = ANGLE_8 * 3
 
 md_index_large = C.add_mdetail_ring(C.get_map_size_blocks() / 2, C.get_map_size_blocks() / 2, 43, 0)
 md_index_small = C.add_mdetail_ring(C.get_map_size_blocks() - 47, 47, 15, 0)
