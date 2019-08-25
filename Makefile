@@ -1,5 +1,5 @@
 ALLEGRO_MODULES = allegro-5 allegro_audio-5 allegro_acodec-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_primitives-5
-CFLAGS = $$(pkg-config --cflags $(ALLEGRO_MODULES)) -Wall
+CFLAGS = $$(pkg-config --cflags $(ALLEGRO_MODULES)) -Wall -fwrapv
 LIBS = -lm -lluajit-5.1 $$(pkg-config --libs $(ALLEGRO_MODULES))
 HEADERS = $(shell find src/ -name '*.h')
 OBJECTS = $(shell find src/ -name '*.c' | sed -e 's/\.c$$/.o/g')
