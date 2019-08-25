@@ -623,55 +623,8 @@ PACKET_COLS
 
 
 	 case MISSION_RED_2:
-	 	{
-
-	 	game.region_in_area_index = 1;
-
-   int template_index = 0;
-
-   load_mission_source("story/red/red2/r2_base.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_m_builder.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_harvest.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_minbase.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_leader1.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_leader2.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_escort.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_picket.c", 1, template_index++);
-   load_mission_source("story/red/red2/r2_defence.c", 1, template_index++);
-
-   clear_remaining_templates(1, template_index);
-   int centre_block = w_init.map_size_blocks / 2;
-   int dwi = 0;
-
-//   int player_spawn_x = centre_block - 12;
-//   int enemy_spawn_x = centre_block + 12;
-
-   int ring_centre_x = centre_block + 10;
-   int ring_centre_y = 50;
-
-   data_well_index [dwi++] = mission_add_data_well(0,
-																																															-1,
-																																															ring_centre_x,
-																																															ring_centre_y);
-
-   set_player_spawn_position_by_latest_well(1, 1024, DEFAULT_DISTANCE_FROM_WELL);
-
-   int base_angle = 250;
-
-   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 16, 6, base_angle + ANGLE_1 / 12);
-   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 28, 6, base_angle);
-   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 42, 6, base_angle + ANGLE_1 / 12);
-   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 58, 6, base_angle);
-// dwi isn't useable after this
-
-
-   set_player_spawn_position_by_specified_well(0, 19, -1024, DEFAULT_DISTANCE_FROM_WELL);
-
-
-   w_init.starting_data_setting [1] = 12;
-
-	 	}
-	  break;
+        do_script("story/red/red2/red2.lua");
+	    break;
 
 
 
