@@ -603,76 +603,8 @@ PACKET_COLS
 
 
 	 case MISSION_ORANGE_1:
-	 	{
-
-	 	game.region_in_area_index = 0;
-
-   int template_index = 0;
-
-   load_mission_source("story/orange/orange1/o1_base.c", 1, template_index++);
-   load_mission_source("story/orange/orange1/o1_harvest.c", 1, template_index++);
-   load_mission_source("story/orange/orange1/o1_harvest.c", 1, template_index++);
-   load_mission_source("story/orange/orange1/o1_harvest2.c", 1, template_index++);
-   load_mission_source("story/orange/orange1/o1_harvest3.c", 1, template_index++);
-   load_mission_source("story/orange/orange1/o1_guard1.c", 1, template_index++);
-   load_mission_source("story/orange/orange1/o1_guard2.c", 1, template_index++);
-   load_mission_source("story/orange/orange1/o1_guard3.c", 1, template_index++);
-   clear_remaining_templates(1, template_index);
-
-   int centre_block = w_init.map_size_blocks / 2;
-
-   int dwi = 0;
-
-#define ORANGE_LINE_THICKNESS_1 90
-#define ORANGE_LINE_THICKNESS_2 40
-
-	 	data_well_index [dwi++] = mission_add_data_well(0, -1, centre_block, centre_block);
-   set_player_spawn_position_by_latest_well(1, ANGLE_2 + 600, DEFAULT_DISTANCE_FROM_WELL);
-
-// lower right branch
-   data_well_index [dwi++] = add_orange_data_well(0, 2, 900, 5000, ORANGE_LINE_THICKNESS_1);
-   int sub_centre_well_1 = dwi - 1;
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_1, 3, -700, 2800, ORANGE_LINE_THICKNESS_2);
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_1, 1, 1500, 2900, ORANGE_LINE_THICKNESS_2);
-   set_player_spawn_position_by_latest_well(0, ANGLE_2 + ANGLE_8, DEFAULT_DISTANCE_FROM_WELL);
-
-// upper right
-   data_well_index [dwi++] = add_orange_data_well(0, 2, -500, 5000, ORANGE_LINE_THICKNESS_1);
-
-// top
-   data_well_index [dwi++] = add_orange_data_well(0, 2, -1450, 4000, ORANGE_LINE_THICKNESS_1);
-   int sub_centre_well_2 = dwi - 1;
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_2, 3, -900, 3200, ORANGE_LINE_THICKNESS_2);
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_2, 3, -3000, 3000, ORANGE_LINE_THICKNESS_2);
-
-// upper left
-   data_well_index [dwi++] = add_orange_data_well(0, 2, 5800, 3700, ORANGE_LINE_THICKNESS_1);
-
-// upper left
-   data_well_index [dwi++] = add_orange_data_well(0, 2, 5000, 3600, ORANGE_LINE_THICKNESS_1);
-   int sub_centre_well_3 = dwi - 1;
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_3, 3, 3400, 3000, ORANGE_LINE_THICKNESS_2);
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_3, 3, -2600, 2600, ORANGE_LINE_THICKNESS_2);
-   int sub_centre_well_3A = dwi - 1;
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_3A, 3, -3200, 2000, ORANGE_LINE_THICKNESS_2);
-
-// left
-   data_well_index [dwi++] = add_orange_data_well(0, 2, 3800, 3800, ORANGE_LINE_THICKNESS_1);
-   int sub_centre_well_4 = dwi - 1;
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_4, 3, 3200, 2200, ORANGE_LINE_THICKNESS_2);
-
-// down
-   data_well_index [dwi++] = add_orange_data_well(0, 2, 2700, 3400, ORANGE_LINE_THICKNESS_1);
-   int sub_centre_well_5 = dwi - 1;
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_5, 3, 1200, 2200, ORANGE_LINE_THICKNESS_2);
-   int sub_centre_well_6 = dwi - 1;
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_6, 3, 1200, 2200, ORANGE_LINE_THICKNESS_2);
-   data_well_index [dwi++] = add_orange_data_well(sub_centre_well_6, 3, 3400, 2200, ORANGE_LINE_THICKNESS_2);
-
-   w_init.starting_data_setting [1] = 5;
-
-	 	}
-	  break;
+        do_script("story/orange/orange1/orange1.lua");
+	    break;
 
 
 
