@@ -618,53 +618,8 @@ PACKET_COLS
 
 
 	 case MISSION_RED_1:
-	 	{
-
-	 	game.region_in_area_index = 0;
-
-   int template_index = 0;
-
-   load_mission_source("story/red/red1/r1_base.c", 1, template_index++);
-//   load_mission_source("story/red/red1/r1_leader1.c", 1, template_index++);
-   load_mission_source("story/red/red1/r1_m_builder.c", 1, template_index++);
-   load_mission_source("story/red/red1/r1_leader1.c", 1, template_index++);
-   load_mission_source("story/red/red1/r1_follower.c", 1, template_index++);
-   load_mission_source("story/red/red1/r1_minbase.c", 1, template_index++);
-   load_mission_source("story/red/red1/r1_scout.c", 1, template_index++);
-   load_mission_source("story/red/red1/r1_follower2.c", 1, template_index++);
-
-   int centre_block = w_init.map_size_blocks / 2;
-   int dwi = 0;
-
-//   int player_spawn_x = centre_block - 12;
-//   int enemy_spawn_x = centre_block + 12;
-
-   int ring_centre_x = centre_block - 10;
-   int ring_centre_y = 42;
-
-   data_well_index [dwi++] = mission_add_data_well(0,
-																																															-1,
-																																															ring_centre_x,
-																																															ring_centre_y);
-
-   set_player_spawn_position_by_latest_well(1, 1024, DEFAULT_DISTANCE_FROM_WELL);
-
-   int base_angle = 450;
-
-   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 16, 6, base_angle + ANGLE_1 / 12);
-//   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 28, 6, base_angle);
-   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 44, 10, base_angle + ANGLE_1 / 20);
-   mission_add_red_data_well_ring(1, ring_centre_x, ring_centre_y, 58, 10, base_angle);
-// dwi isn't useable after thism
-
-
-   set_player_spawn_position_by_specified_well(0, 16, -1024, DEFAULT_DISTANCE_FROM_WELL);
-
-
-   w_init.starting_data_setting [1] = 12;
-
-	 	}
-	  break;
+        do_script("story/red/red1/red1.lua");
+ 	    break;
 
 
 	 case MISSION_RED_2:
