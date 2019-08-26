@@ -45,6 +45,7 @@ Packages needed for Liberation Circuit on Debian GNU/Linux or Ubuntu:
 - liballegro-dialog5-dev
 - liballegro-image5-dev
 - liballegro5-dev
+- libluajit-5.1-dev
 
 To build using cmake (using the cmake scripts by Kyle Findlay; The
 following instructions are from u/JCanseco on reddit)
@@ -66,7 +67,7 @@ To build on macOS (Sierra (10.12) with latest Homebrew and Xcode)
 ```sh
 git clone https://github.com/linleyh/liberation-circuit.git
 cd liberation-circuit
-brew install allegro
+brew install allegro luajit
 ./do
 cd bin
 libcirc
